@@ -1,0 +1,10 @@
+@import '../assets/styles/variables';
+@import '../assets/styles/functions';
+@import '../assets/styles/mixins';
+
+header {
+    @include flex;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: size(2);
+}

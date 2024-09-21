@@ -1,0 +1,15 @@
+@let isLoggedIn = isLoggedIn$ | async;
+
+<ng-container>
+    @if (!isLoggedIn) {
+        <button (click)="login()" class="button button--action">
+            <span class="material-symbols-outlined">person</span>
+            Login
+        </button>
+    } @else {
+        <button (click)="logout()" class="button button--action">
+            <span class="material-symbols-outlined">close</span>
+            Logout
+        </button>
+    }
+</ng-container>

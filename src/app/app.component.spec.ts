@@ -14,10 +14,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'file-safe' title`, () => {
+  it(`should have the 'File Safe' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('file-safe');
+    expect(app.title).toEqual('File Safe');
   });
 
   it('should render title', () => {
