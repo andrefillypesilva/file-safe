@@ -1,0 +1,22 @@
+/**
+    BUTTON
+*/
+.button {
+    @include flex;
+    padding: size(1.2) size(2.4);
+    border-radius: size(1);
+    border: none;
+    font-family: inherit;
+    font-size: size(2);
+
+    &--action {
+        background-color: var(--third-color);
+        color: var(--primary-color);
+        transition: background-color .2s;
+
+        &:hover {
+            background-color: var(--secondary-color);
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,6 @@
+/**
+    FUNCTIONS
+*/
+@function size($times) {
+    @return calc(var(--default-size) * #{$times});
+}
