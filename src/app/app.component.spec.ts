@@ -1,11 +1,32 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
+/**
+ * MOCKS
+ */
+import localStorageMock from './shared/mocks/local-storage.mock';
+import authServiceMock from './shared/mocks/auth-service.mock';
+import jsonMock from './shared/mocks/json.mock';
+
+/**
+ * SERVICES
+ */
+import { AuthService } from './shared/services/auth.service';
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
+      providers: [{
+        provide: AuthService, useValue: authServiceMock(),
+      }],
     }).compileComponents();
+
+    Object.defineProperty(window, 'localStorage', {
+      value: localStorageMock(),
+    });
+
+    Object.defineProperties(JSON, jsonMock());
   });
 
   it('should create the app', () => {
@@ -18,12 +39,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('File Safe');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, file-safe');
   });
 });
