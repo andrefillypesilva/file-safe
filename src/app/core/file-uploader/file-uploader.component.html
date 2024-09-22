@@ -1,25 +1,44 @@
+@let isLoggedIn = isLoggedIn$ | async;
+
 <ng-container>
-    <div class="file-uploader__container" for="fileInput">
-        <div class="file-uploader__instructions">
+    @if (isLoggedIn) {
+        <div class="file-uploader__container" for="fileInput">
+            <div class="file-uploader__instructions">
+                @if (fileStatus === FileStatusEnum.INITIAL) {
+                    <span class="material-symbols-outlined">cloud_upload</span>
+                    <label for="fileInput">Drag and drop files here or upload</label>
+                } @else if (fileStatus === FileStatusEnum.ERROR) {
+                    <span class="material-symbols-outlined file-uploader--fail">error</span>
+                    <label for="fileInput">Error trying to upload file, please try again.</label>
+                } @else {
+                    <span class="material-symbols-outlined file-uploader--done">cloud_done</span>
+                    <label for="fileInput">{{ selectedFile?.name }}</label>
+                }
+            </div>
+            <div class="file-uploader__splitter"></div>
             @if (fileStatus === FileStatusEnum.INITIAL) {
-                <span class="material-symbols-outlined">cloud_upload</span>
-                <label for="fileInput">Drag and drop files here or upload</label>
+                <button class="file-uploader__input button button--upload-action" (click)="openFileSelector()">
+                    <input type="file" id="fileInput" name="fileInput" #fileInput (change)="onFileSelector($event)" />
+                    Upload
+                </button>
+            } @else if (fileStatus === FileStatusEnum.ERROR) {
+                <button class="button button--confirm-action" (click)="onClear()">
+                    <span class="material-symbols-outlined">close</span>
+                    Clear
+                </button>
             } @else {
-                <span class="material-symbols-outlined file-uploader--done">cloud_done</span>
-                <label for="fileInput">{{ selectedFile?.name }}</label>
+                <button class="button button--confirm-action" (click)="onSubmit()" [disabled]="isLoading">
+                    @if (isLoading) {
+                        <span class="material-symbols-outlined">autorenew</span>
+                        Loading
+                    } @else {
+                        <span class="material-symbols-outlined">check</span>
+                        Confirm
+                    }
+                </button>
             }
         </div>
-        <div class="file-uploader__splitter"></div>
-        @if (fileStatus === FileStatusEnum.INITIAL) {
-            <div class="file-uploader__input button button--upload-action" (click)="openFileSelector()">
-                <input type="file" id="fileInput" name="fileInput" #fileInput (change)="onFileSelector($event)" />
-                Upload
-            </div>
-        } @else {
-            <div class="button button--confirm-action" (click)="onSubmit()">
-                <span class="material-symbols-outlined">done_all</span>
-                Confirm
-            </div>
-        }
-    </div>
+    } @else {
+        <h3>This content is allowed only to logged users.</h3>
+    }
 </ng-container>

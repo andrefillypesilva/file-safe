@@ -23,6 +23,10 @@
             &.file-uploader--done {
                 color: var(--done-color);
             }
+
+            &.file-uploader--fail {
+                color: var(--fail-color);
+            }
         }
     }
 
