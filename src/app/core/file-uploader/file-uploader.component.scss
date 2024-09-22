@@ -9,6 +9,10 @@
         background-color: var(--soft-color);
         border: size(.25) dashed var(--third-color);
         padding: size(4);
+
+        &--dragging {
+            opacity: .5;
+        }
     }
 
     &__instructions {

@@ -1,7 +1,13 @@
 <ng-container>
-    <div class="file-uploader__container" for="fileInput">
+    <div
+        class="file-uploader__container"
+        [class]="{ 'file-uploader__container--dragging': fileStatus === FileStatusEnum.DRAGGING }"
+        (dragover)="onDragOver($event)"
+        (dragleave)="onDragLeave($event)"
+        (drop)="onDrop($event)"
+    >
         <div class="file-uploader__instructions">
-            @if (fileStatus === FileStatusEnum.INITIAL) {
+            @if (fileStatus === FileStatusEnum.INITIAL || fileStatus === FileStatusEnum.DRAGGING) {
                 <span class="material-symbols-outlined">cloud_upload</span>
                 <label for="fileInput">Drag and drop files here or upload</label>
             } @else if (fileStatus === FileStatusEnum.ERROR) {

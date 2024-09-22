@@ -40,6 +40,10 @@ export class FileUploaderComponent implements OnInit {
         this.selectedFile = files[0];
       }
     });
+
+    document.getElementsByClassName('file-uploader__instructions')[0].addEventListener('drop', ($event) => {
+      this.onFileSelector($event);
+    });
   }
 
   public openFileSelector(): void {
@@ -69,6 +73,24 @@ export class FileUploaderComponent implements OnInit {
 
   public onClear(): void {
     this.clearFileUploader();
+  }
+
+  public onDrop($event: DragEvent): void {
+    $event.preventDefault();
+
+    if ($event.dataTransfer && $event.dataTransfer.files.length > 0) {
+      this.selectedFilesSubject.next($event.dataTransfer.files);
+    }
+  }
+
+  public onDragOver($event: DragEvent): void {
+    $event.preventDefault();
+    this.fileStatus = FileStatus.DRAGGING;
+  }
+
+  public onDragLeave($event: DragEvent): void {
+    $event.preventDefault();
+    this.fileStatus = FileStatus.INITIAL; 
   }
 
   private clearFileUploader(): void {
