@@ -5,8 +5,8 @@ import { BehaviorSubject } from "rxjs";
     providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(this.getInitialLoggedInStatus());
-  public isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  private readonly isLoggedInSubject = new BehaviorSubject<boolean>(this.getInitialLoggedInStatus());
+  public readonly isLoggedIn$ = this.isLoggedInSubject.asObservable();
   
   private getInitialLoggedInStatus(): boolean {
     return !!JSON.parse(localStorage.getItem('isLoggedIn') ?? 'false');

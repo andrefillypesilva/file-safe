@@ -10,12 +10,23 @@
     font-size: size(2);
 
     &--action {
-        background-color: var(--third-color);
-        color: var(--primary-color);
-        transition: background-color .2s;
+        @include action-button;
+    }
+
+    &--upload-action {
+        @include action-button;
+        border: size(.125) solid var(--third-color);
 
         &:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--soft-color);
+        }
+    }
+
+    &--confirm-action {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+
+        &:hover {
             cursor: pointer;
         }
     }

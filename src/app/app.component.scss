@@ -8,3 +8,9 @@ header {
     color: var(--secondary-color);
     padding: size(2);
 }
+
+.main {
+    display: flex;
+    justify-content: center;
+    padding: size(4) 0;
+}

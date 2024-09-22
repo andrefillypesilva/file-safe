@@ -6,11 +6,12 @@ import { RouterOutlet } from '@angular/router';
  * CUSTOM COMPONENTS
  */
 import { LoginComponent } from './core/login/login.component';
+import { FileUploaderComponent } from './core/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, LoginComponent],
+  imports: [RouterOutlet, CommonModule, LoginComponent, FileUploaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

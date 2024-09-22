@@ -20,9 +20,7 @@ export class UserService {
     }
 
     private createInactivityTimer(): any {
-        console.log('1');
         return setTimeout(() => {
-            console.log('2');
             this.inactivitySubject.next();
         }, this.inactivityDuration);
     }

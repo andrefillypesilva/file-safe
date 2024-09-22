@@ -1,0 +1,41 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/mixins';
+@import '../../../assets/styles/functions';
+
+.file-uploader {
+    &__container {
+        @include flex;
+        flex-wrap: wrap;
+        background-color: var(--soft-color);
+        border: size(.25) dashed var(--third-color);
+        padding: size(4);
+    }
+
+    &__instructions {
+        @include flex;
+        flex-direction: column;
+
+        span {
+            font-size: size(16);
+            color: var(--third-color);
+            margin-bottom: size(1);
+
+            &.file-uploader--done {
+                color: var(--done-color);
+            }
+        }
+    }
+
+    &__splitter {
+        height: size(12);
+        width: size(.2);
+        background-color: var(--third-color);
+        margin: 0 size(4);
+    }
+
+    &__input {
+        input[type="file"] {
+            display: none;
+        }
+    }
+}
