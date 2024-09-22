@@ -8,7 +8,7 @@ export default function localStorageMock() {
             localStorage[key] = value;
         },
         getItem: (key: string) => {
-            return key in localStorage ? localStorage[key] : '';
+            return key in localStorage ? localStorage[key] : null;
         },
         /**
          * NOT IMPLEMENTED BECAUSE NOT BEEN USED

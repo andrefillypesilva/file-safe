@@ -9,7 +9,7 @@ export class AuthService {
   public isLoggedIn$ = this.isLoggedInSubject.asObservable();
   
   private getInitialLoggedInStatus(): boolean {
-    return !!JSON.parse(localStorage.getItem('isLoggedIn') ?? '');
+    return !!JSON.parse(localStorage.getItem('isLoggedIn') ?? 'false');
   }
 
   private storeLoggedInStatus(loggedInStatus: boolean): void {
