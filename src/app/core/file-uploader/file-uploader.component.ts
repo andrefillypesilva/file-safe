@@ -40,10 +40,6 @@ export class FileUploaderComponent implements OnInit {
         this.selectedFile = files[0];
       }
     });
-
-    document.getElementsByClassName('file-uploader__instructions')[0].addEventListener('drop', ($event) => {
-      this.onFileSelector($event);
-    });
   }
 
   public openFileSelector(): void {
