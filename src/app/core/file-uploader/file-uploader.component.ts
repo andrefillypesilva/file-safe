@@ -90,7 +90,7 @@ export class FileUploaderComponent implements OnInit {
 
   public onDragLeave($event: DragEvent): void {
     $event.preventDefault();
-    this.fileStatus = FileStatus.INITIAL; 
+    this.fileStatus = FileStatus.INITIAL;
   }
 
   private clearFileUploader(): void {
