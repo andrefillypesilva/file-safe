@@ -1,1 +1,24 @@
-<p>file-list works!</p>
+@let fileList = fileList$ | async;
+
+<ng-container>
+    @if (fileList && fileList.length > 0) {
+        <table class="file-list__table">
+            <tr>
+                <th>Filename</th>
+                <th>Path</th>
+                <th>Size</th>
+                <th>Thumbnail</th>
+            </tr>
+            @for (file of fileList; track file.name) {
+                <tr>
+                    <td>{{ file.name }}</td>
+                    <td>{{ file.path }}</td>
+                    <td>{{ file.size }}</td>
+                    <td class="file-list__thumbnail">
+                        <img [src]="'http://localhost:3000/uploaded-files/' + file.name" [alt]="file.name" />
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</ng-container>

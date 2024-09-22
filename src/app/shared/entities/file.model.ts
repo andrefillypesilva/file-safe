@@ -4,3 +4,9 @@ export enum FileStatus {
     SUBMITTED = 'submitted',
     ERROR = 'error',
 };
+
+export interface FileEntity {
+    path: string;
+    name: string;
+    size: number;
+}

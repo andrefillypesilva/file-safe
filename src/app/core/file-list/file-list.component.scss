@@ -1,0 +1,40 @@
+@import '../../../assets/styles/variables';
+@import '../../../assets/styles/functions';
+
+.file-list {
+    &__table {
+        margin-top: size(10);
+        border: size(.125) solid var(--primary-color);
+
+        tr {
+            &:nth-child(odd) {
+                background-color: var(--secondary-color);
+            }
+
+            &:nth-child(even) {
+                background-color: var(--soft-color);
+            }
+
+            &:first-child {
+                background-color: var(--third-color);
+            }
+        }
+
+        th, td {
+            padding: size(1);
+        }
+
+        td {
+            font-size: size(1.5);
+        }
+
+        img {
+            width: size(4);
+        }
+    }
+
+    &__thumbnail {
+        display: flex;
+        justify-content: center;
+    }
+}

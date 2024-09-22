@@ -11,7 +11,7 @@ import { FileStatus } from '../../shared/entities/file.model';
  * SERVICES
  */
 import { FileUploaderService } from '../../shared/services/file-uploader.service';
-import { AuthService } from '../../shared/services/auth.service';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-file-uploader',
@@ -22,18 +22,17 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class FileUploaderComponent implements OnInit {
   private readonly fileUploaderService = inject(FileUploaderService);
-  private readonly authService = inject(AuthService);
+  private readonly userService = inject(UserService);
 
   @ViewChild('fileInput') private readonly fileEl!: ElementRef<HTMLInputElement>;
   private readonly selectedFilesSubject = new BehaviorSubject<FileList | null>(null);
   private readonly selectedFiles$ = this.selectedFilesSubject.asObservable();
 
-  public readonly isLoggedIn$ = this.authService.isLoggedIn$;
   public readonly FileStatusEnum = FileStatus;
   public fileStatus: FileStatus = FileStatus.INITIAL;
   public selectedFile: File | null = null;
   public isLoading = false;
-
+  
   public ngOnInit(): void {
     this.selectedFiles$.subscribe((files: FileList | null) => {
       if (files) {
@@ -75,5 +74,6 @@ export class FileUploaderComponent implements OnInit {
   private clearFileUploader(): void {
     this.fileStatus = FileStatus.INITIAL;
     this.selectedFile = null;
+    this.userService.refreshUI();
   }
 }
