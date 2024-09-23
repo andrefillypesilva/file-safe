@@ -2,12 +2,12 @@
 
 <ng-container>
     @if (!isLoggedIn) {
-        <button (click)="login()" class="button button--action">
+        <button (click)="login()" class="button button--action" data-cy="login-button">
             <span class="material-symbols-outlined">person</span>
             Login
         </button>
     } @else {
-        <button (click)="logout()" class="button button--action">
+        <button (click)="logout()" class="button button--action" data-cy="logout-button">
             <span class="material-symbols-outlined">close</span>
             Logout
         </button>

@@ -7,10 +7,10 @@
 <main class="main">
   <div class="content">
     @if (isLoggedIn) {
-      <app-file-uploader />
-      <app-file-list />
+      <app-file-uploader data-cy="file-uploader" />
+      <app-file-list data-cy="file-list" />
     } @else {
-        <h3>This content is allowed only to logged users.</h3>
+        <h3 data-cy="access-denied-message">This content is allowed only to logged users.</h3>
     }
   </div>
 </main>

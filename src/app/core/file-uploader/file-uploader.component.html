@@ -20,8 +20,8 @@
         </div>
         <div class="file-uploader__splitter"></div>
         @if (fileStatus === FileStatusEnum.INITIAL) {
-            <button class="file-uploader__input button button--upload-action" (click)="openFileSelector()">
-                <input type="file" id="fileInput" name="fileInput" #fileInput (change)="onFileSelector($event)" />
+            <button class="file-uploader__input button button--upload-action" (click)="openFileSelector()" data-cy="upload-button">
+                <input type="file" id="fileInput" name="fileInput" #fileInput (change)="onFileSelector($event)" data-cy="input-file" />
                 Upload
             </button>
         } @else if (fileStatus === FileStatusEnum.ERROR) {
@@ -30,7 +30,7 @@
                 Clear
             </button>
         } @else {
-            <button class="button button--confirm-action" (click)="onSubmit()" [disabled]="isLoading">
+            <button class="button button--confirm-action" (click)="onSubmit()" [disabled]="isLoading" data-cy="confirm-upload-button">
                 @if (isLoading) {
                     <span class="material-symbols-outlined">autorenew</span>
                     Loading
