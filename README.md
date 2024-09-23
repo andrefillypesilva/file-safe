@@ -1,27 +1,21 @@
 # FileSafe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+A simple File Uploader using Angular 18 and NodeJS.
 
-## Development server
+## Development server (Frontend)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run start` to initialize the Frontend application. Navigate to `http://localhost:4200/`.
 
-## Code scaffolding
+![system ui](https://github.com/andrefillypesilva/file-safe/blob/main/src/assets/system-ui.png?raw=true)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development server (Backend)
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run start-server` to initialize the Backend server. It will run on `http://localhost:3000/`. In order to have a successfully upload experience, you should start the backend server (otherwise it will break on the upload action, what could be useful to test this case). The backend project is in `./server` directory for further conference.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Run `npm run e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io/). The end-to-end project is in `./cypress` directory for further conference.
