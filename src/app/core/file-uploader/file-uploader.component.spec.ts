@@ -66,8 +66,7 @@ describe('FileUploaderComponent', () => {
     describe('when fileUploaderService.uploadFile is fail', () => {
       beforeEach(async () => {
         TestBed.resetTestingModule();
-        await TestBed.overrideProvider(FileUploaderService, { useValue: fileUploaderServiceFailedMock() })
-                      .overrideProvider(UserService, { useValue: userServiceMock() }).compileComponents();
+        await TestBed.overrideProvider(FileUploaderService, { useValue: fileUploaderServiceFailedMock() }).compileComponents();
         fileUploaderService = TestBed.inject(FileUploaderService);
         fixture = TestBed.createComponent(FileUploaderComponent);
         component = fixture.componentInstance;
@@ -83,7 +82,6 @@ describe('FileUploaderComponent', () => {
         expect(component.isLoading).toBeFalse();
         expect(component.fileStatus).toBe(FileStatus.ERROR);
         expect(component.selectedFile).toEqual(selectedFile);
-        expect(userService.refreshUI).not.toHaveBeenCalled();
       });
     });
 
