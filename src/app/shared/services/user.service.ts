@@ -5,7 +5,7 @@ import { Subject } from "rxjs";
     providedIn: 'root',
 })
 export class UserService {
-    private readonly inactivityDuration = 5000;
+    private readonly inactivityDuration = 300000;
     private inactivityTimer = this.createInactivityTimer();
     private readonly inactivitySubject = new Subject<void>();
     private readonly refreshUISubject = new Subject<void>();
